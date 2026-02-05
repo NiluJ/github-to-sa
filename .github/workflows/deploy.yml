@@ -1,0 +1,25 @@
+name: Deploy to Azure Storage Static Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: azure/CLI@v2
+      with:
+        inlineScript: |
+          az storage blob upload-batch \
+            --account-name STORAGE_ACCOUNT_NAME \
+            --destination '$web' \
+            --source .
