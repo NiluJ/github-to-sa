@@ -20,6 +20,6 @@ jobs:
       with:
         inlineScript: |
           az storage blob upload-batch \
-            --account-name STORAGE_ACCOUNT_NAME \
+            --account-name gittoazure \
             --destination '$web' \
             --source .
