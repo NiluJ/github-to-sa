@@ -22,4 +22,5 @@ jobs:
           az storage blob upload-batch \
             --account-name gittoazure \
             --destination '$web' \
-            --source .
+            --source . \
+            --auth-mode login
